@@ -62,7 +62,7 @@ gem "devise", "~> 4.7"
 # Use pagy for simple and fast pagination
 gem "pagy", "~> 3.8"
 
-# Use Searchkick as to implement searches with Elasticsearch
+# Use Searchkick to implement searches with Elasticsearch
 gem "searchkick", "~> 4.3"
 
 # Use Pundit for authorizations and policies
