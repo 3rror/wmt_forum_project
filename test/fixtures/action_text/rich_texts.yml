@@ -1,0 +1,14 @@
+# one:
+#   record: name_of_fixture (ClassOfFixture)
+#   name: content
+#   body: <p>In a <i>million</i> stars!</p>
+
+post_one_content:
+  record: Post
+  name: content
+  body: >
+    Magna mollit eiusmod quis irure deserunt nulla sint pariatur. Nisi aliquip
+    in sit reprehenderit adipisicing. Esse dolore eiusmod quis qui deserunt
+    consequat laboris deserunt et. Culpa proident cupidatat in nisi anim.
+    Reprehenderit do eiusmod incididunt cillum non ullamco dolor amet proident
+    voluptate esse amet.

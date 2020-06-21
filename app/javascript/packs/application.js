@@ -15,3 +15,20 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+
+// Action-text
+require("trix")
+require("@rails/actiontext")
+
+
+import "@fortawesome/fontawesome-free/css/all.css";
+import './application.scss'
+
+
+function expandSearchBar(event) {
+    let el = document.getElementById("query").addEventListener('click', function(e) {
+        document.getElementById("site-nav").classList.add("searching");
+    });
+}
+document.addEventListener("turbolinks:load", expandSearchBar);

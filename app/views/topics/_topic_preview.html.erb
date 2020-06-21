@@ -1,0 +1,47 @@
+<div class="topic-preview" onclick="location.href='<%= topic_path(topic) %>';">
+
+    <% if topic.author.avatar.attached? %>
+        <%= image_tag topic.author.avatar, alt: "user-avatar", class: "topic-preview__author-avatar" %>
+    <% else %>
+        <%= image_tag 'avatar-person.png', alt: "user-avatar", class: "topic-preview__author-avatar" %>
+    <% end %>
+
+    <%#= image_tag (topic.author.avatar.attached? ? topic.author.avatar : 'avatar-person.png'), alt: "user-avatar", class: "topic-preview__author-avatar" %>
+
+    <h2 class="topic-preview__title"><%= topic.title %></h2>
+
+    <% if topic.posts.size > 1 %>
+        <div class="topic-preview__last-reply">
+            <i class="fas fa-reply"></i> latest reply from
+            <u><%= topic.author.username %></u> <%= time_ago_in_words topic.posts.last.created_at %> ago
+        </div>
+
+        <%# TODO: Fix this %>
+    <% end %>
+
+    <div class="topic-preview__first-post-extract">
+        <%= truncate(topic.posts.first.content.to_plain_text, length: 225) %>
+    </div>
+
+    <div class="topic-preview__author">
+        <%= topic.author.username %>
+    </div>
+
+    <div class="topic-preview__section">
+        <%= topic.topic_section.name %>
+    </div>
+
+    <div class="topic-preview__comments">
+        <div class="topic-preview__commenters-avatars">
+            <% topic.commenters.limit(5).find_each do |user|  %>
+                <% if user.avatar.attached? %>
+                    <%= image_tag user.avatar , alt: "user-avatar", class: "topic-preview__commenter-avatar" %>
+                <% else %>
+                    <%= image_tag 'avatar-person.png', alt: "user-avatar", class: "topic-preview__commenter-avatar" %>
+                <% end %>
+            <% end %>
+        </div>
+
+        <%= link_to "#{topic.posts.size - 1} comments", topic, class: "topic-preview__number-of-comments" %>
+    </div>
+</div>

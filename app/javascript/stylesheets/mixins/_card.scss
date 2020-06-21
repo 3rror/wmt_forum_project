@@ -1,0 +1,7 @@
+@mixin card {
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid transparentize(black, 0.92);
+    box-shadow: transparentize(black, 0.95) 0 4px 4px 0;
+    background-color: #fff;
+}

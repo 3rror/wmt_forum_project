@@ -1,0 +1,122 @@
+.topic-preview {
+  position: relative;
+  display: grid;
+
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid transparentize(black, 0.92);
+  box-shadow: transparentize(black, 0.95) 0 4px 4px 0;
+  background-color: #fff;
+
+  margin-bottom: 30px;
+
+  // grid-template-columns: auto auto auto;
+  grid-template-columns: 0.3fr 3fr 1fr;
+  gap: 10px;
+
+  grid-template-areas:
+    "avatar title comments"
+    "avatar last-reply comments"
+    "avatar . comments"
+    "avatar . comments"
+    "extract extract extract";
+
+  align-content: space-between;
+
+  &:hover {
+    transition: ease-in-out 0.2s;
+    border-color: transparentize($color: #3cacfe, $amount: 0.2);
+    cursor: pointer;
+
+    // margin-left: -10px;
+    // margin-right: 10px;
+
+    .topic-preview__section {
+      transition: ease-in-out 0.2s;
+      border-color: transparentize($color: #3cacfe, $amount: 0.2);
+      cursor: pointer;
+    }
+  }
+}
+
+.topic-preview__title {
+  grid-area: title;
+
+  margin: 0;
+}
+
+.topic-preview__author-avatar {
+  grid-area: avatar;
+
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 45px;
+}
+
+.topic-preview__last-reply {
+  grid-area: last-reply;
+
+  color: transparentize(black, 0.3);
+  font-size: 0.8em;
+  font-weight: bold;
+
+  // margin-bottom: 20px;
+  align-self: start;
+}
+
+.topic-preview__first-post-extract {
+  grid-area: extract;
+
+}
+
+.topic-preview__author {
+  grid-area: author;
+
+  display: none;
+}
+
+.topic-preview__section {
+  position: absolute;
+  top: -14px;
+  left: 70%;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid transparentize(black, 0.92);
+  padding: 2px 8px;
+  font-size: 0.7em;
+  font-weight: bold;
+  color: transparentize(black, 0.1);
+
+  &:before {
+    content: "•";
+    color: fuchsia;
+  }
+}
+
+.topic-preview__comments {
+  grid-area: comments;
+
+  justify-self: end;
+}
+
+.topic-preview__commenters-avatars {
+  margin-left: -10px;
+}
+
+.topic-preview__commenter-avatar {
+  width: 30px;
+  height: 30px;
+
+  margin-right: -15px;
+  border-radius: 45px;
+  border: 1px solid white;
+}
+
+.topic-preview__number-of-comments {
+  color: #aaa;
+  padding: 10px;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-decoration: none;
+}

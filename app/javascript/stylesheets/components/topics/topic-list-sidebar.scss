@@ -1,0 +1,68 @@
+.topic-list-sidebar {
+  grid-area: "sidebar";
+}
+
+.topic-list-sidebar__new-topic-btn {
+  width: 100%;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  background-color: #3cacfe;
+  border-radius: 5px;
+  box-shadow: transparentize(#3cacfe, 0.4) 0 1px 6px 0;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8em;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+
+  // Font Awesome icon
+  i {
+    font-size: 1.1em;
+    margin-right: 10px;
+  }
+}
+
+.topic-list-sidebar__filter,
+.topic-list-sidebar__section {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+
+  &:link,
+  &:visited,
+  &:active {
+    color: inherit;
+  }
+
+  &:hover {
+    color: #3cacfe;
+    transition: ease-in-out 0.2s;
+  }
+
+  // Font Awesome icons
+  i {
+    font-size: 1.1em;
+    margin-right: 10px;
+  }
+
+  &.current {
+    // color: #3cacfe;
+    color: orange;
+  }
+}
+
+.topic-list-sidebar__section {
+  color: transparentize($color: #000000, $amount: 0.7);
+}
+
+.topic-list-sidebar__separator {
+  background-color: transparentize($color: #aaa, $amount: 0.8);
+  height: 1px;
+  margin: 30px auto;
+}

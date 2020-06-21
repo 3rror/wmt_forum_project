@@ -1,0 +1,23 @@
+<div class="wrapper-site-nav">
+  <nav id="site-nav" class="site-nav" role="navigation">
+    <%= link_to root_path, class: "site-nav--logo-link", id: "site-nav--logo-link" do %>
+      <%= image_tag "logo.png", alt: "site-logo", class: "site-logo" %>
+    <% end %>
+
+    <%= form_with url: search_path, local: true, method: :get, class: "nav-search-form" do %>
+      <%= text_field_tag(:query, nil, class: "nav-search-field", placeholder: "Search the forum") %>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <div class="site-nav--user-profile">
+        <%= image_tag (current_user.avatar.attached? ? current_user.avatar : "avatar-person.png"), alt: "logo", class: "site-nav--user-avatar" %>
+        <%= link_to current_user.username, edit_user_registration_path,  class: "site-nav--username" %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt site-nav--logout-icon"></i>
+        <% end %>
+      </div>
+    <% else %>
+      <%= link_to "Login", new_user_session_path, class: "site-nav--user-profile" %>
+    <% end %>
+  </nav>
+</div>

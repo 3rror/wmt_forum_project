@@ -5,3 +5,44 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+u = User.create username: "Test user", email: "user@example.com", password: "12345678"
+
+TopicSection.create([
+  { name: "Announcements" },
+  { name: "Feedbacks" },
+  { name: "FAQ" },
+  { name: "Jobs" },
+])
+
+def download_remote_file(url)
+  response = Net::HTTP.get_response(URI.parse(url))
+  StringIO.new(response.body)
+end
+
+10.times do
+  u = User.create({
+    username: Faker::Internet.username,
+    email: Faker::Internet.email,
+    password: "12345678",
+  })
+
+  file = download_remote_file("https://api.adorable.io/avatars/285/#{u.email}")
+  u.avatar.attach(io: file, filename: "user_avatar_#{u.id}.png", content_type: "image/png")
+end
+
+10.times do
+  t = Topic.create(
+    title: Faker::Book.title,
+    topic_section: TopicSection.order("RANDOM()").first
+  )
+  rand(2..15).times do
+    Post.create({
+      topic: t,
+      user: User.order("RANDOM()").first,
+      content: Faker::Books::Lovecraft.paragraph,
+      })
+  end
+end
+
+User.first.subscribed_topics << Topic.order("RANDOM()").first(5)

@@ -1,0 +1,73 @@
+.post {
+    @include card;
+
+    display: grid;
+    // grid-template-columns: minmax(auto, 100px) 1fr auto auto;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-areas:
+        "author-avatar author date links"
+        "content content content content"
+        "content content content content";
+    grid-gap: 10px;
+    column-gap: 25px;
+
+    // justify-content: left;
+    align-items: center;
+}
+
+.post--author {
+    grid-area: author;
+
+    font-weight: bold;
+    font-size: .9em
+}
+
+
+
+.post--author-avatar {
+    grid-area: author-avatar;
+
+    max-width: 50px;
+    border-radius: 45px;
+
+    border: 1px solid transparentize(black, 0.92);
+    box-shadow: transparentize(black, 0.8) 0 1px 1px 0;
+
+
+}
+
+.post--links {
+    grid-area: links;
+
+    display: flex;
+    font-weight: bold;
+}
+
+.post--link {
+    text-decoration: none;
+    padding: 8px;
+    // color: #ccc;
+
+    &:link,
+    &:visited,
+    &:active {
+      color: inherit;
+    }
+
+    &:hover {
+      color: #3cacfe;
+      transition: ease-in-out 0.2s;
+    }
+}
+
+
+.post--content {
+    grid-area: content;
+}
+
+.post--date {
+    grid-area: date;
+
+    font-weight: bold;
+    font-size: .9em
+}

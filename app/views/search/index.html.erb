@@ -1,0 +1,5 @@
+<h1>Search for: <%= params[:query] %></h1>
+
+<% @posts.each.with_index do |post, i| %>
+    <%= render "posts/post", post: post, is_first: (i == 1) %>
+<% end %>

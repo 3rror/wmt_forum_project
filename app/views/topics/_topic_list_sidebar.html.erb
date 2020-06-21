@@ -1,0 +1,25 @@
+<nav class="topic-list-sidebar">
+    <%= link_to new_topic_path, class: "topic-list-sidebar__new-topic-btn" do %>
+        <i class="fas fa-pen"></i> Start New Topic
+    <% end %>
+
+    <%= link_to topics_path, class: "topic-list-sidebar__filter #{"current" if controller_name == "topics" && action_name == "index"}" do %>
+        <i class="far fa-comments"></i> All topics
+    <% end %>
+
+    <% if user_signed_in? %>
+        <%= link_to subscribed_topics_path, class: "topic-list-sidebar__filter #{"current" if current_page?(controller: :subscribed_topics, action: :index)}" do %>
+            <i class="far fa-star"></i> Following
+        <% end %>
+    <% end %>
+
+    <div class="topic-list-sidebar__separator"></div>
+
+    <% TopicSection.all.each do |section| %>
+        <% if section.id == params[:id].to_i %>
+            <%= link_to section.name, topic_section_path(section), class: "topic-list-sidebar__section current" %>
+        <% else %>
+            <%= link_to section.name, topic_section_path(section), class: "topic-list-sidebar__section" %>
+        <% end %>
+    <% end %>
+</nav>

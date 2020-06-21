@@ -1,0 +1,31 @@
+.topic-list__wrapper {
+}
+
+.topic-list {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "topic-flow sidebar"
+    "pagy-nav sidebar";
+
+  gap: 80px;
+}
+
+@media (max-width: 700px) {
+  .topic-list {
+    grid-template-columns: auto;
+    grid-template-areas:
+      "sidebar"
+      "topic-flow "
+      "pagy-nav";
+  }
+}
+
+.topic-flow {
+  grid-area: topic-flow;
+}
+
+.pagy-nav {
+  grid-area: pagy-nav;
+}

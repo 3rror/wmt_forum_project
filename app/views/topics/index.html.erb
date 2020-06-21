@@ -1,0 +1,13 @@
+<div class="topic-list__wrapper">
+  <div class="topic-list">
+    <%= render "topics/topic_list_sidebar" %>
+
+    <div class="topic-flow">
+      <% @topics.each do |topic| %>
+        <%= render "topics/topic_preview", topic: topic %>
+      <% end %>
+    </div>
+
+    <%== pagy_nav(@pagy) %>
+  </div>
+</div>

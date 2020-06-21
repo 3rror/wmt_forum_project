@@ -1,0 +1,39 @@
+<div class="topic-summary" onclick="location.href='<%= topic_path(topic) %>';">
+
+    <%= image_tag (topic.author.avatar.attached? ? topic.author.avatar : 'avatar-person.png'), alt: "user-avatar", class: "topic-author-avatar" %>
+
+    <div class="topic-preview-contentTODO">
+
+        <h2 class="topic-preview-title">
+            <%= topic.title %>
+        </h2>
+
+        <% if topic.posts.count > 1 %>
+            <div class="topic-preview-latest-reply">
+                latest reply from <%= topic.posts.first.user.username %> <%= time_ago_in_words topic.posts.last.created_at %> ago
+            </div>
+        <% end %>
+
+        <div class="topic-preview-content">
+        <%#= topic.posts.first.content %>
+        <%= truncate(strip_tags(topic.posts.first.content.to_s), length: 150) %>
+        </div>
+
+        <div class="topic-preview-author">
+        </div>
+
+        <div class="topic-preview-section">
+            <%= topic.topic_section.name %>
+        </div>
+
+    </div>
+    <div class="todo">
+        <div class="images">
+            <% topic.posts.take(5).each do |post|  %>
+            <%# [topic.posts.count.take - 1, 4].min.times do %>
+                <%= image_tag (post.user.avatar.attached? ? post.user.avatar : 'avatar-person.png'), alt: "user-avatar", class: "topic-comments-author-avatars" %>
+            <% end %>
+        </div>
+        <%= link_to "#{topic.posts.count - 1} comments", topic, class: "topic-preview-n-comments" %>
+    </div>
+</div>

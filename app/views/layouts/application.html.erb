@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WmtForumProject</title>
+    <title>WMT Forum Project</title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Simple forum project for WMT course at UniPV">
+    <meta name="keywords" content="Forum, Project, Ruby on Rails, WMT, UniPV">
+    <meta name="author" content="Gianluca Andreotti">
+
+    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render 'shared/site_nav' %>
+    </header>
+
+    <section id="page-content">
+      <p id="notice"><%= notice %></p>
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </section>
   </body>
 </html>

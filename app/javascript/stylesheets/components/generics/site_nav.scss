@@ -1,0 +1,132 @@
+header {
+  position: sticky;
+  top: 0;
+  background-color: transparentize($color: #fff, $amount: 0.01);
+  z-index: 100;
+}
+
+.wrapper-site-nav {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: transparentize(black, 0.8) 0 1px 3px 0;
+  // border-bottom: 1px solid #ccc;
+}
+
+.site-nav:not(.searching) {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  column-gap: 15px;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+  // height: 100px;
+  height: 52px;
+}
+
+.site-nav.searching {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: auto;
+  column-gap: 15px;
+  justify-items: center;
+  align-items: center;
+  // height: 100px;
+  height: 52px;
+
+  .site-logo,
+  .site-nav--user-profile {
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.1s linear;
+  }
+
+  .nav-search-form {
+    transition: width 250ms ease-in-out;
+    transition-delay: 0.6s;
+    // width: 100%;
+  }
+}
+
+.site-logo {
+  max-width: 190px;
+  // padding: 10px;
+  // display: block;
+  // max-heigth: 100%;
+  // object-fit: cover;
+  // position: absolute;
+  // left: 50%;
+  // top: 50%;
+  // transform: translate(-50%, -50%);
+}
+
+.nav-search-form {
+  width: 100%;
+  // width: 600px;
+}
+
+.nav-search-field {
+  // height: 3vh;
+  height: 35px;
+  width: 100%;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  font-size: 0.9em;
+
+  &::placeholder {
+    color: transparentize(black, 0.4);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.site-nav--user-profile {
+  justify-self: end;
+  // line-height: 52px; // Set equal to nav height to center it vertically
+
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  column-gap: 15px;
+
+  color: #3cacfe;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.site-nav--username {
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    color: #3cacfe;
+  }
+}
+
+.site-nav--user-avatar {
+  display: block;
+  max-width: 40px;
+}
+
+.site-nav--logo-link {
+  // Used for vertical centering of .site-logo
+  justify-self: start;
+
+  max-height: 100%;
+  // height: auto;
+
+  img {
+    display: block;
+  }
+}
+
+.site-nav--logout-icon {
+  color: #3cacfe;
+}

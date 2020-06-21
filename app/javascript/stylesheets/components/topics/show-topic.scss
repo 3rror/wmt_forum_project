@@ -1,0 +1,46 @@
+// TODO Move file
+
+// .wrapper-posts {
+//     max-width: 1200px;
+//     padding-left: 20px;
+//     padding-right: 20px;
+//     margin: auto;
+//     box-shadow: transparentize(black, 0.8) 0 0px 3px 0;
+//   }
+
+.wrapper-posts {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "topic-title topic-title"
+      "post-flow .";
+    gap: 20px;
+}
+
+.topic-title {
+    grid-area: topic-title;
+}
+.topic-post-flow {
+    grid-area: post-flow;
+}
+
+.topic-post {
+    padding: 20px;
+    margin-bottom: 50px;
+    // margin: auto;
+    box-shadow: transparentize(black, 0.7) 0 1px 3px 0;
+    max-width: 700px;
+    border-radius: 3px;
+    background-color: white;
+
+    .separator {
+        background-color: transparentize($color: #aaa, $amount: .8);
+        height: 1px;
+        margin: 30px auto;
+      }
+
+    .far {
+        color: transparentize($color: #3cacfe, $amount: 0.2);
+    }
+}

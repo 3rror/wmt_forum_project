@@ -1,0 +1,5 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+topic_one:
+  title: Aute quis cillum dolor deserunt labore labore do non
+  topic_section: announcements
