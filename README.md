@@ -6,6 +6,7 @@ and Multimedia Technologies at University of Pavia.
 ## Requirements
 
 Tested with:
+
 * Ruby 2.7.1
 * PostgreSQL 12.3
 * ElasticSearch 7.6.2
