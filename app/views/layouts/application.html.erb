@@ -24,7 +24,7 @@
     </header>
 
     <div id="page-content">
-      <p id="notice"><%= notice %></p>
+      <%= render "shared/notice" %>
       <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
   </body>
