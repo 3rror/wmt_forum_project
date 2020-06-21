@@ -43,6 +43,9 @@ group :development do
 
   # Use Faker to generate random sample data
   gem "faker", "~> 2.11"
+
+  # Use Bullet to detect and avoid N+1 problem in queries
+  gem "bullet", "~> 6.1"
 end
 
 group :test do
@@ -67,5 +70,3 @@ gem "searchkick", "~> 4.3"
 
 # Use Pundit for authorizations and policies
 gem "pundit", "~> 2.1"
-
-gem "bullet", "~> 6.1", group: 'development'
