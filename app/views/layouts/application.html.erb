@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>WMT Forum Project</title>
 
@@ -23,9 +23,9 @@
       <%= render 'shared/site_nav' %>
     </header>
 
-    <section id="page-content">
+    <div id="page-content">
       <p id="notice"><%= notice %></p>
       <%= content_for?(:content) ? yield(:content) : yield %>
-    </section>
+    </div>
   </body>
 </html>
