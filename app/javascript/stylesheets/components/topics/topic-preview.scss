@@ -10,7 +10,6 @@
 
   margin-bottom: 30px;
 
-  // grid-template-columns: auto auto auto;
   grid-template-columns: 0.3fr 3fr 1fr;
   gap: 10px;
 
@@ -27,9 +26,6 @@
     transition: ease-in-out 0.2s;
     border-color: transparentize($color: #3cacfe, $amount: 0.2);
     cursor: pointer;
-
-    // margin-left: -10px;
-    // margin-right: 10px;
 
     .topic-preview__section {
       transition: ease-in-out 0.2s;
@@ -61,13 +57,11 @@
   font-size: 0.8em;
   font-weight: bold;
 
-  // margin-bottom: 20px;
   align-self: start;
 }
 
 .topic-preview__first-post-extract {
   grid-area: extract;
-
 }
 
 .topic-preview__author {
