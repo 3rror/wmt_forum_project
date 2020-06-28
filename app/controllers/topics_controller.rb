@@ -11,6 +11,8 @@ class TopicsController < ApplicationController
 
   # GET /topics/1
   def show
+    @posts = @topic.posts.includes([:rich_text_content, user: { avatar_attachment: :blob }])
+    @pagy, @posts = pagy(@posts)
   end
 
   # GET /topics/new
