@@ -46,6 +46,8 @@ group :development do
 
   # Use Bullet to detect and avoid N+1 problem in queries
   gem "bullet", "~> 6.1"
+
+  gem "letter_opener", "~> 1.7"
 end
 
 group :test do
