@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-u = User.create username: "Test user", email: "user@example.com", password: "12345678"
+u = User.create username: "Admin", email: "admin@example.com", password: "123456", admin: true
 
 TopicSection.create([
   { name: "Announcements" },
@@ -22,27 +22,30 @@ end
 
 10.times do
   u = User.create({
-    username: Faker::Internet.username,
-    email: Faker::Internet.email,
-    password: "12345678",
+    username: Faker::Internet.unique.username,
+    email: Faker::Internet.unique.email,
+    password: "123456",
   })
 
   file = download_remote_file("https://api.adorable.io/avatars/285/#{u.email}")
   u.avatar.attach(io: file, filename: "user_avatar_#{u.id}.png", content_type: "image/png")
+  sleep(5)
 end
 
 10.times do
   t = Topic.create(
-    title: Faker::Book.title,
+    title: Faker::Book.unique.title,
     topic_section: TopicSection.order("RANDOM()").first
   )
-  rand(2..15).times do
+
+  rand(1..15).times do
     Post.create({
       topic: t,
       user: User.order("RANDOM()").first,
-      content: Faker::Books::Lovecraft.paragraph,
-      })
+      content: Faker::Books::Lovecraft.unique.paragraph,
+    })
+    sleep(2)
   end
 end
 
-User.first.subscribed_topics << Topic.order("RANDOM()").first(5)
+User.first.subscribed_topics << Topic.order("RANDOM()").limit(5)
