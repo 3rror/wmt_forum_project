@@ -4,17 +4,21 @@
   margin-right: auto;
 }
 
-.topic--title {
+.topic__title {
   text-align: center;
 }
 
-.topic--links {
+.topic__links {
   text-align: center;
   display: flex;
   justify-content: space-evenly;
 }
 
-.topic--link {
+.topic__link {
   text-decoration: none;
   color: #3cacfe;
+}
+
+.topic__pagination {
+  text-align: center;
 }

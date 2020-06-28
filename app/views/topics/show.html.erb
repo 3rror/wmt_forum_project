@@ -1,28 +1,28 @@
 <div class="topic">
-  <h1 class="topic--title">
+  <h1 class="topic__title">
     <%= @topic.title %>
   </h1>
 
-  <div class="topic--links">
+  <div class="topic__links">
     <% if user_signed_in? %>
       <% if current_user.subscribed_topics.exists?(@topic.id) %>
-        <%= link_to topic_unsubscribe_path(@topic), class: "topic--link" do %>
+        <%= link_to topic_unsubscribe_path(@topic), class: "topic__link" do %>
           <i class="fas fa-bell-slash"></i> Unsubscribe
         <% end %>
       <% else %>
-        <%= link_to topic_subscribe_path(@topic), class: "topic--link" do %>
+        <%= link_to topic_subscribe_path(@topic), class: "topic__link" do %>
           <i class="fas fa-bell"></i> Subscribe
         <% end %>
       <% end %>
     <% end %>
 
-    <%= link_to new_topic_post_path(@topic), class: "topic--link" do %>
+    <%= link_to new_topic_post_path(@topic), class: "topic__link" do %>
       <i class="fas fa-reply"></i> Reply
     <% end %>
   </div>
 
   <div class="topic--posts">
-    <% @topic.posts.includes([:rich_text_content, user: { avatar_attachment: :blob }]).find_each.with_index do |post, i| %>
+    <% @posts.find_each.with_index do |post, i| %>
       <%= render "posts/post", post: post, is_first: (i == 0) %>
     <% end %>
   </div>

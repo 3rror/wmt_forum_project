@@ -3,38 +3,38 @@
 <% else %>
 <div class="post">
 <% end %>
-  <%= image_tag (post.user.avatar.attached? ? post.user.avatar : 'avatar-person.png') , alt: "user-avatar", class: "post--author-avatar" %>
+  <%= image_tag (post.user.avatar.attached? ? post.user.avatar : 'avatar-person.png') , alt: "user-avatar", class: "post__author-avatar" %>
 
-  <div class="post--author"><%= post.user.username %></div>
-  <div class="post--date">Posted on <%= post.created_at.to_s(:long) %></div>
-  <div class="post--content">
+  <div class="post__author"><%= post.user.username %></div>
+  <div class="post__date">Posted on <%= post.created_at.to_s(:long) %></div>
+  <div class="post__content">
     <%= post.content %>
   </div>
 
-  <div class="post--links">
+  <div class="post__links">
     <% if user_signed_in? && policy(post).update? %>
       <% if is_first %>
-        <%= link_to edit_topic_path(post.topic), class: "post--link" do %>
+        <%= link_to edit_topic_path(post.topic), class: "post__link" do %>
           <i class="far fa-edit"></i>
         <% end %>
       <% else %>
-        <%= link_to edit_post_path(post), class: "post--link" do %>
+        <%= link_to edit_post_path(post), class: "post__link" do %>
           <i class="far fa-edit"></i>
         <% end %>
       <% end %>
     <% end %>
 
-    <%= link_to new_topic_post_path(post.topic, response_to_post: post.id ), class: "post--link" do %>
+    <%= link_to new_topic_post_path(post.topic, response_to_post: post.id ), class: "post__link" do %>
       <i class="fas fa-reply"></i>
     <% end %>
 
     <% if user_signed_in? && policy(post).destroy? %>
       <% if is_first %>
-        <%= link_to topic_path(post.topic), data: { confirm: "Are you sure? This will delete the entire topic" }, method: :delete, class: "post--link" do %>
+        <%= link_to topic_path(post.topic), data: { confirm: "Are you sure? This will delete the entire topic" }, method: :delete, class: "post__link" do %>
           <i class="far fa-trash-alt"></i>
         <% end %>
       <% else %>
-        <%= link_to post_path(post), data: { confirm: "Are you sure?" }, method: :delete, class: "post--link" do %>
+        <%= link_to post_path(post), data: { confirm: "Are you sure?" }, method: :delete, class: "post__link" do %>
           <i class="far fa-trash-alt"></i>
         <% end %>
       <% end %>
