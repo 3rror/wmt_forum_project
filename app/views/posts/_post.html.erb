@@ -1,4 +1,8 @@
+<% if defined?(click_to_show_topic) %>
+  <div class="post" onclick="location.href='<%= topic_path(post.topic) %>'">
+<% else %>
 <div class="post">
+<% end %>
   <%= image_tag (post.user.avatar.attached? ? post.user.avatar : 'avatar-person.png') , alt: "user-avatar", class: "post--author-avatar" %>
 
   <div class="post--author"><%= post.user.username %></div>
