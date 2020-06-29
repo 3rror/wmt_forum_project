@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :topic_subscriptions, dependent: :destroy
   has_many :subscribed_topics, through: :topic_subscriptions, source: :topic
 
-  has_one_attached :avatar
+  has_one_attached :avatar, dependent: :destroy
 
   validates :username, presence: true, length: { maximum: 60 }, uniqueness: { case_sensitive: false }
 end
