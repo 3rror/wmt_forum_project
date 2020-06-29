@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
 
   # GET /topics
   def index
-    @topics = Topic.includes(:topic_section, posts: [user: { avatar_attachment: :blob }]).all
+    @topics = Topic.includes(:topic_section, :posts, :commenters).all
     @pagy, @topics = pagy(@topics)
   end
 
