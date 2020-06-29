@@ -5,17 +5,19 @@ class Topic < ApplicationRecord
 
   belongs_to :topic_section
 
-  has_many :posts, -> { includes(:user).order(created_at: :asc) }, dependent: :destroy, inverse_of: :topic
-  has_many :commenters, through: :posts, source: :user
+  has_many :posts, -> { includes(:user).order(created_at: :asc) }, inverse_of: :topic
+  has_many :commenters, -> { distinct.with_attached_avatar }, through: :posts, source: :user, dependent: :destroy
 
-  has_many :topic_subscriptions, dependent: :destroy
-  has_many :subscribed_users, through: :topic_subscriptions, source: :user
+  has_many :topic_subscriptions
+  has_many :subscribed_users, through: :topic_subscriptions, source: :user, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 100 }
 
   accepts_nested_attributes_for :posts
 
+  belongs_to :user
+
   def author
-    posts.includes(user: [:avatar_attachment]).first.user
+    user
   end
 end

@@ -33,6 +33,8 @@ end
 end
 
 10.times do
+  # FIX ME: Topic has no author!
+
   t = Topic.create(
     title: Faker::Book.unique.title,
     topic_section: TopicSection.order("RANDOM()").first

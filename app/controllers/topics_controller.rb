@@ -30,6 +30,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     @topic.posts.first.user = current_user
     @topic.subscribed_users << current_user
+    @topic.user = current_user
 
     if @topic.save
       redirect_to @topic, notice: 'Topic was successfully created.'
