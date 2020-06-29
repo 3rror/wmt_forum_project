@@ -33,7 +33,7 @@
 
     <div class="topic-preview__comments">
         <div class="topic-preview__commenters-avatars">
-            <% topic.commenters.distinct.limit(5).find_each do |user|  %>
+            <% topic.commenters.limit(5).find_each do |user|  %>
                 <% if user.avatar.attached? %>
                     <%= image_tag user.avatar , alt: "user-avatar", class: "topic-preview__commenter-avatar" %>
                 <% else %>
