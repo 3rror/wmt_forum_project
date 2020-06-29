@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     authorize @post
 
     if @post.save
-      redirect_to @topic, notice: 'Post was successfully created.'
+      redirect_to @topic
     else
       render :new
     end
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     authorize @post
 
     @post.destroy
-    redirect_to @post.topic, notice: 'Post was successfully destroyed.'
+    redirect_to @post.topic, notice: 'Post was successfully deleted.'
   end
 
   private
